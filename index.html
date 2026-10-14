@@ -1,0 +1,2002 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>NYUMI NOOR | Handcrafted Bracelet Atelier</title>
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ivory: '#FAF8F5',
+            alabaster: '#FFFFFF',
+            cashmere: '#F5EFE6',
+            gold: {
+              300: '#F5E7BE',
+              400: '#DFC07B',
+              500: '#C5A059',
+              600: '#A17D38',
+              700: '#8C6D31'
+            },
+            charcoal: '#201A18',
+            espresso: '#3D322F'
+          },
+          fontFamily: {
+            cinzel: ['Cinzel', 'serif'],
+            cormorant: ['Cormorant Garamond', 'serif'],
+            sans: ['Montserrat', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html, body {
+      background-color: #FAF8F5;
+      color: #201A18;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* -------------------------------------------------------------
+       CRITICAL HERO FIX: ZERO WHITE/MILKY VEIL. RICH VIVID CONTRAST.
+       ------------------------------------------------------------- */
+    .hero-stage {
+      position: relative;
+      min-height: 84vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #141110; /* Pure deep base so image never looks washed out */
+    }
+
+    .hero-photo-layer {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .hero-photo-layer img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 38%;
+      display: block;
+      /* Deep contrast, rich saturation, punchy blacks & natural golds */
+      filter: brightness(88%) contrast(118%) saturate(112%);
+    }
+
+    /* Edge-only subtle dark cinema vignette - ZERO milky white overlay */
+    .hero-edge-vignette {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: radial-gradient(circle at center, rgba(0, 0, 0, 0) 35%, rgba(10, 8, 7, 0.38) 85%, rgba(0, 0, 0, 0.65) 100%);
+      pointer-events: none;
+    }
+
+    /* Transparent text container - shows full background photo */
+.hero-text-shield {
+  position: relative;
+  z-index: 3;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  max-width: 700px;
+  margin: 24px auto;
+  padding: 20px 16px;
+  text-align: center;
+}
+
+    .cushion-velvet-stage {
+      background: radial-gradient(circle at 50% 45%, #FFFFFF 0%, #F8F3EB 55%, #EDE1D1 100%);
+      box-shadow: inset 0 2px 18px rgba(161, 125, 56, 0.12), 0 10px 30px -8px rgba(74, 62, 61, 0.09);
+    }
+
+    input[type=range] {
+      -webkit-appearance: none;
+      background: #E8DFD3;
+      height: 7px;
+      border-radius: 9999px;
+      border: 1px solid rgba(197, 160, 89, 0.35);
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 24px;
+      width: 24px;
+      border-radius: 50%;
+      background: #C5A059;
+      box-shadow: 0 3px 10px rgba(161, 125, 56, 0.45);
+      cursor: pointer;
+      border: 3px solid #FFFFFF;
+    }
+
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* HIGH-CONTRAST OWNER DELETE BUTTON */
+    .owner-delete-btn {
+      display: none;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 50;
+      background: #DC2626;
+      color: #FFFFFF;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      box-shadow: 0 4px 14px rgba(220, 38, 38, 0.6);
+      border: 2px solid #FFFFFF;
+      cursor: pointer;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+    .owner-delete-btn:hover {
+      background: #B91C1C;
+      transform: scale(1.08);
+    }
+    body.owner-mode-active .owner-delete-btn {
+      display: inline-flex !important;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .charm-medallion {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(145deg, #ffffff, #faf5eb);
+      border: 1px solid rgba(197, 160, 89, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(197, 160, 89, 0.12);
+      transition: all 0.2s ease;
+    }
+    .charm-option-card:hover .charm-medallion {
+      transform: scale(1.06);
+      border-color: #C5A059;
+    }
+    .active-charm .charm-medallion {
+      background: linear-gradient(145deg, #fffcf5, #f5e9d3);
+      border-color: #C5A059;
+      box-shadow: 0 3px 10px rgba(197, 160, 89, 0.3);
+    }
+  </style>
+</head>
+<body class="bg-ivory text-charcoal font-sans antialiased overflow-x-hidden selection:bg-gold-400 selection:text-white">
+
+  <!-- TOP OWNER STUDIO TOOLBAR (UNLOCKED WITH PIN 1234) -->
+  <aside id="ownerStudioBar" class="hidden bg-charcoal text-alabaster border-b-2 border-gold-500 z-50 sticky top-0 shadow-2xl transition-all">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-3 text-xs">
+      <div class="flex items-center gap-2.5">
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+        <span class="font-cinzel font-bold text-gold-300 tracking-wider uppercase">Owner Studio Active</span>
+        <span class="text-[10px] text-white/70 border border-white/20 px-2.5 py-0.5 rounded-full hidden sm:inline">
+          Red Delete buttons active on every bracelet card
+        </span>
+      </div>
+
+      <div class="flex items-center gap-2 flex-wrap justify-center">
+        <!-- Direct Hero Background Changer -->
+        <input type="file" id="heroFileInputDirect" accept="image/*" class="hidden" onchange="handleHeroFileDirect(this)">
+        <button type="button" onclick="document.getElementById('heroFileInputDirect').click()" class="px-3.5 py-1.5 rounded-full bg-gold-400 text-charcoal font-bold hover:brightness-105 tracking-wider uppercase text-[11px] flex items-center gap-1.5 transition">
+          <span>🖼️ Upload / Change Background Photo</span>
+        </button>
+
+        <button type="button" onclick="openAddBraceletModal()" class="px-3 py-1.5 rounded-full bg-gold-500 text-charcoal font-bold hover:brightness-105 tracking-wider uppercase text-[11px] flex items-center gap-1.5 transition">
+          <span>+ Add Bracelet</span>
+        </button>
+
+        <button type="button" onclick="restoreDeletedCatalog()" class="px-3 py-1.5 rounded-full border border-gold-500/50 text-gold-300 hover:bg-white/10 tracking-wider uppercase text-[11px] flex items-center gap-1.5 transition">
+          <span>↺ Restore All Deleted</span>
+        </button>
+
+        <button type="button" onclick="lockOwnerMode()" class="px-4 py-1.5 rounded-full border border-white/30 text-white/90 hover:bg-white/10 tracking-wider uppercase text-[11px] flex items-center gap-1.5 transition">
+          <span>🔒 Lock / Customer View</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Top Announcement -->
+  <div class="bg-cashmere/95 border-b border-gold-500/25 py-2 px-3 text-center flex items-center justify-center gap-2 relative z-40">
+    <span class="text-[10px] sm:text-xs uppercase tracking-[0.24em] text-gold-700 font-semibold">
+      Authentic Artisan Hand Bracelets • Handcrafted with Devotion in India
+    </span>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="relative z-30 border-b border-gold-500/20 bg-alabaster/95 backdrop-blur-md sticky top-0 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 py-3.5 flex items-center justify-between">
+      <nav class="hidden md:flex items-center space-x-7 text-xs uppercase tracking-[0.18em] font-medium text-charcoal/80">
+        <a href="#atelier" class="text-gold-600 hover:text-charcoal flex items-center gap-1.5 font-bold transition">
+          <span>✨ 3D Custom Studio</span>
+        </a>
+        <a href="#gallery" class="hover:text-gold-600 transition flex items-center gap-1.5">
+          <span>📿 Signature Pieces</span>
+        </a>
+        <a href="https://instagram.com/nyumi.noor" target="_blank" rel="noopener noreferrer" class="hover:text-gold-600 transition flex items-center gap-1.5">
+          <span>@nyumi.noor</span>
+        </a>
+      </nav>
+
+      <!-- Brand Logo (Triple-Click for Owner Mode) -->
+      <div onclick="handleBrandLogoClick()" class="cursor-pointer flex flex-col items-center group select-none text-center" title="Nyumi Noor Atelier (Triple-click for Owner Mode)">
+        <span class="font-cinzel text-xl sm:text-2xl tracking-[0.32em] font-bold text-charcoal group-hover:text-gold-600 transition-colors">
+          NYUMI NOOR
+        </span>
+        <span class="text-[8px] sm:text-[9px] uppercase tracking-[0.45em] text-gold-600 font-medium">
+          Handmade Bracelet Atelier
+        </span>
+      </div>
+
+      <div class="flex items-center space-x-2.5">
+        <!-- Tactile Acoustic Sound Toggle -->
+        <button id="soundToggleBtn" onclick="toggleSoundEngine()" class="p-2 sm:px-3 sm:py-1.5 rounded-full border border-gold-500/30 hover:border-gold-500 text-charcoal transition-colors flex items-center gap-1.5 bg-white shadow-xs" title="Toggle Tactile Jewelry Sound">
+          <span id="soundIcon">🔊</span>
+          <span id="soundText" class="text-[10px] font-semibold tracking-wider uppercase hidden sm:inline text-charcoal/70">Sound: ON</span>
+        </button>
+
+        <a href="https://wa.me/?text=Hello%20Nyumi%20Noor!%20I%20would%20like%20to%20order%20a%20handcrafted%20bracelet." target="_blank" class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-emerald-600/30 bg-emerald-50 text-emerald-800 text-xs font-semibold hover:bg-emerald-100 transition shadow-xs">
+          <span>💬 WhatsApp</span>
+        </a>
+
+        <button onclick="toggleCartDrawer(true); SoundEngine.playBagSound();" class="p-2 sm:px-3.5 sm:py-1.5 rounded-full border border-gold-500/30 hover:border-gold-500 text-charcoal transition-colors flex items-center gap-1.5 bg-white shadow-xs">
+          <span class="text-xs font-semibold font-cinzel hidden sm:inline">Bag</span>
+          <span id="bagCounter" class="bg-gold-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-10">
+
+    <!-- HERO SECTION - HIGH CONTRAST, ZERO MILKY OVERLAY -->
+    <section id="heroSection" class="hero-stage">
+      <!-- Direct Photo Layer with Vivid Filter -->
+      <div class="hero-photo-layer">
+        <img id="mainHeroImage" src="1000360496.jpg" alt="Nyumi Noor Handcrafted Bracelets" onerror="handleHeroImgFallback(this)">
+      </div>
+
+      <!-- Edge-Only Dark Cinema Vignette -->
+      <div class="hero-edge-vignette"></div>
+
+      <!-- Crisp Compact Frosted Glass Text Shield -->
+      <div class="hero-text-shield">
+        <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full border border-gold-500/40 bg-gold-500/10 mb-3">
+          <span class="w-1.5 h-1.5 rounded-full bg-gold-600"></span>
+          <span class="text-[10px] uppercase tracking-[0.24em] text-gold-700 font-bold">
+            Real-Time 3D Spherical Light Visualizer
+          </span>
+        </div>
+
+        <h1 class="font-cinzel text-3xl sm:text-5xl font-bold text-charcoal tracking-[0.2em] uppercase leading-tight mb-2">
+          NYUMI NOOR
+        </h1>
+
+        <p class="font-cormorant italic text-xl sm:text-2xl text-espresso font-normal mb-3">
+          Bespoke jewelry created exclusively for your wrists and hands
+        </p>
+
+        <p class="text-xs sm:text-sm text-espresso/80 font-light leading-relaxed mb-6 max-w-lg mx-auto">
+          Tactile multi-colored freshwater pearls, Tahitian peacock black, rose gold blush, honey amber crystal refraction, and handcrafted heishi polymer beads.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+          <a href="#atelier" onclick="SoundEngine.playChime()" class="w-full sm:w-auto px-7 py-3 rounded-full bg-gradient-to-r from-gold-500 via-gold-400 to-gold-600 text-white font-bold tracking-[0.16em] text-xs uppercase hover:brightness-105 shadow-md transition flex items-center justify-center gap-2">
+            <span>Design In 3D Atelier</span>
+          </a>
+          <a href="#gallery" onclick="SoundEngine.playBeadSound()" class="w-full sm:w-auto px-7 py-3 rounded-full border border-gold-500/50 bg-white/95 text-charcoal font-semibold tracking-[0.14em] text-xs uppercase hover:bg-cashmere shadow-xs transition flex items-center justify-center gap-2">
+            <span>Explore Real Bracelets</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3D PROCEDURAL CUSTOMIZER ATELIER -->
+    <section id="atelier" class="py-12 sm:py-16 px-3 sm:px-6 border-b border-gold-500/20 bg-cashmere/30 relative">
+      <div class="max-w-7xl mx-auto space-y-6 sm:space-y-8">
+
+        <div class="text-center sm:text-left flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+          <div>
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-gold-500/40 bg-white text-gold-600 text-[10px] uppercase tracking-widest font-bold mb-1.5">
+              <span>✨ 3D Multi-Tone Pearl Shaders</span>
+            </div>
+            <h2 class="font-cormorant text-2xl sm:text-4xl text-charcoal font-normal">
+              The 3D Bracelet Atelier
+            </h2>
+            <p class="text-xs text-espresso/70 font-light">
+              Explore Akoya white, Tahitian black, rose blush, lavender lilac, and multi-color pearl combinations with 360° touch orbit.
+            </p>
+          </div>
+
+          <div class="flex items-center justify-center sm:justify-end gap-2 flex-wrap">
+            <button onclick="randomizeMix()" class="px-3.5 py-1.5 rounded-full bg-gradient-to-r from-gold-500 to-gold-400 text-white text-[11px] font-bold uppercase tracking-wider hover:brightness-105 shadow-xs transition active:scale-95">
+              <span>🔀 Surprise Mix!</span>
+            </button>
+            <button onclick="toggleViewMode()" class="px-3.5 py-1.5 rounded-full border border-gold-500/40 bg-white text-charcoal text-[11px] font-semibold uppercase tracking-wider hover:bg-cashmere transition shadow-xs">
+              <span id="canvasViewModeLabel">Flat Tray View</span>
+            </button>
+            <button onclick="toggleAutoSpin()" id="canvasSpinBtn" class="px-3.5 py-1.5 rounded-full border border-gold-500/40 bg-white text-charcoal text-[11px] font-semibold uppercase tracking-wider hover:bg-cashmere transition shadow-xs">
+              <span id="canvasSpinLabel">Spin: ON</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+
+          <!-- Left Column: 3D Canvas Stage -->
+          <div class="lg:col-span-5 bg-white rounded-2xl p-4 sm:p-5 border border-gold-500/30 shadow-md space-y-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <span id="canvasModeHeadline" class="text-[9.5px] uppercase tracking-widest text-gold-600 font-bold block">3D Wrist Loop Simulation</span>
+                <h3 id="customTitleBadge" class="font-cinzel text-sm sm:text-base text-charcoal font-semibold leading-tight">Classic Akoya White Pearl & Gold Starfish</h3>
+              </div>
+              <div class="flex items-center gap-1 bg-ivory px-2.5 py-1 rounded-full border border-gold-500/25 text-[10px] text-charcoal font-medium">
+                <span>🔄 360° Touch Orbit</span>
+              </div>
+            </div>
+
+            <!-- ZERO-DEPENDENCY 3D CANVAS STAGE -->
+            <div id="canvasBox" class="relative w-full max-w-[340px] sm:max-w-none mx-auto aspect-square rounded-xl cushion-velvet-stage border border-gold-500/30 flex items-center justify-center overflow-hidden cursor-grab active:cursor-grabbing select-none">
+              <canvas id="customizerCanvas" width="680" height="680" class="w-full h-full block"></canvas>
+
+              <div class="absolute bottom-2.5 right-2.5 bg-white/90 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-gold-500/30 text-[9.5px] text-charcoal font-mono shadow-xs pointer-events-none">
+                <span>3D Shader 60FPS</span>
+              </div>
+
+              <div class="absolute top-2.5 left-2.5 bg-white/90 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-gold-500/30 text-[9.5px] text-gold-600 flex items-center gap-1 shadow-xs pointer-events-none">
+                <span class="w-1.5 h-1.5 rounded-full bg-gold-500"></span>
+                <span id="wristFitBadge">Standard 16.5 cm</span>
+              </div>
+            </div>
+
+            <!-- Price & Summary -->
+            <div class="bg-ivory rounded-xl p-3 border border-gold-500/25 space-y-1.5 text-xs">
+              <div class="flex justify-between items-center text-charcoal/80 text-[11px]">
+                <span class="truncate max-w-[190px]" id="recipeBaseSummary">Classic Akoya White Pearl</span>
+                <span id="recipeCharmSummary" class="text-gold-600 font-semibold truncate">+ Gold Starfish</span>
+              </div>
+              <div class="pt-1.5 border-t border-gold-500/20 flex justify-between items-baseline">
+                <span class="font-cinzel text-charcoal uppercase tracking-wider text-[11px] font-bold">Handcrafted Total:</span>
+                <div class="text-right">
+                  <span id="canvasPriceDisplay" class="font-cormorant text-2xl font-bold text-gold-600">₹899</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 pt-1">
+              <button onclick="addCustomToBag()" class="py-2.5 px-3 rounded-full bg-gradient-to-r from-gold-500 to-gold-600 text-white font-bold text-xs uppercase hover:brightness-105 shadow-sm transition flex items-center justify-center gap-1.5 active:scale-95">
+                <span>Add to Bag</span>
+              </button>
+              
+              <button onclick="orderCustomViaWhatsApp()" class="py-2.5 px-3 rounded-full border border-emerald-600/40 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 font-semibold text-xs tracking-wider transition flex items-center justify-center gap-1.5">
+                <span>Order on WhatsApp</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Right Column: Step Tabs Controls -->
+          <div class="lg:col-span-7 bg-white rounded-2xl border border-gold-500/30 shadow-md p-4 sm:p-6 space-y-5">
+            
+            <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1 border-b border-gold-500/20">
+              <button type="button" onclick="switchAtelierTab('tab-base', this)" class="atelier-tab-btn flex-1 min-w-[85px] py-2 px-2 text-center rounded-xl font-cinzel text-xs font-bold transition bg-gold-500 text-white shadow-xs">
+                📿 Pearls & Beads
+              </button>
+              <button type="button" onclick="switchAtelierTab('tab-letters', this)" class="atelier-tab-btn flex-1 min-w-[85px] py-2 px-2 text-center rounded-xl font-cinzel text-xs font-bold transition text-charcoal/70 bg-ivory hover:bg-cashmere">
+                🔤 Monogram
+              </button>
+              <button type="button" onclick="switchAtelierTab('tab-charms', this)" class="atelier-tab-btn flex-1 min-w-[85px] py-2 px-2 text-center rounded-xl font-cinzel text-xs font-bold transition text-charcoal/70 bg-ivory hover:bg-cashmere">
+                ✨ Charms
+              </button>
+              <button type="button" onclick="switchAtelierTab('tab-sizing', this)" class="atelier-tab-btn flex-1 min-w-[85px] py-2 px-2 text-center rounded-xl font-cinzel text-xs font-bold transition text-charcoal/70 bg-ivory hover:bg-cashmere">
+                📏 Sizing
+              </button>
+            </div>
+
+            <!-- TAB 1: 3D PEARLS & MIXES PALETTE -->
+            <div id="tab-base" class="atelier-tab-pane space-y-3">
+              <div class="flex justify-between items-center">
+                <span class="text-xs font-cinzel font-bold text-charcoal">Multi-Colored Pearls & Artisan Foundations</span>
+                <span class="text-[11px] text-gold-600 font-semibold" id="activeBaseLabel">Classic Akoya White Pearl (₹799)</span>
+              </div>
+
+              <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                <!-- 1. Classic Akoya White Pearl -->
+                <button type="button" onclick="pickBase('pearl_white', this, 'Classic Akoya White Pearl', 799)" class="base-option-card p-3 rounded-xl border text-left transition border-gold-500 bg-gold-500/10 shadow-xs active-base" data-base="pearl_white">
+                  <div class="flex items-center gap-1.5 mb-2">
+                    <span class="w-4.5 h-4.5 rounded-full bg-gradient-to-br from-[#ffffff] via-[#fffaf0] to-[#ded5c7] shadow-xs border border-white/80"></span>
+                    <span class="w-3.5 h-3.5 rounded-full bg-gradient-to-br from-[#ffecb3] via-[#c5a059] to-[#8c6d31]"></span>
+                  </div>
+                  <span class="block text-xs font-semibold text-charcoal leading-snug">Akoya White Pearl</span>
+                  <span class="text-[10px] text-charcoal/50 block">Silk Nacre + Gold</span>
+                  <span class="text-[11px] text-gold-600 font-bold mt-0.5 block">₹799</span>
+                </button>
+
+                <!-- 2. Multiverse Pastel Mix -->
+                <button type="button" onclick="pickBase('pearl_multi_mix', this, 'Multiverse Pastel Pearl Mix', 849)" class="base-option-card p-3 rounded-xl border text-left transition border-gold-500/25 hover:border-gold-500/60 bg-ivory" data-base="pearl_multi_mix">
+                  <div class="flex items-center gap-1 mb-2">
+                    <span class="w-3.5 h-3.5 rounded-full bg-gradient-to-br from-[#ffd9df] to-[#f49bb2]"></span>
+                    <span class="w-3.5 h-3.5 rounded-full bg-gradient-to-br from-[#e9d5ff] to-[#c084fc]"></span>
+                    <span class="w-3.5 h-3.5 rounded-full bg-gradient-to-br from-[#fef08a] to-[#eab308]"></span>
+                    <span class="w-3.5 h-3.5 rounded-full bg-gradient-to-br from-[#ffffff] to-[#e2e8f0]"></span>
+                  </div>
+                  <span class="block text-xs font-semibold text-charcoal leading-snug">Pastel Pearl Mix</span>
+                  <span class="text-[10px] text-charcoal/50 block">Blush, Lilac & Gold</span>
+                  <span class="text-[11px] text-gold-600 font-bold mt-0.5 block">₹849</span>
+                </button>
+
+                <!-- 3. Tahitian Peacock Black Pearl -->
+                <button type="button" onclick="pickBase('pearl_tahitian', this, 'Tahitian Peacock Black Pearl', 899)" class="base-option-card p-3 rounded-xl border text-left transition border-gold-500/25 hover:border-gold-500/60 bg-ivory" data-base="pearl_tahitian">
+                  <div class="flex items-center gap-1.5 mb-2">
+                    <span class="w-4.5 h-4.5 rounded-full bg-gradient-to-br from-[#3b4252] via-[#1a2e2b] to-[#121820] shadow-xs border border-emerald-400/30"></span>
+                    <span class="w-3.5 h-3.5 rounded-full bg-gradient-to-br from-[#ffecb3] via-[#c5a059] to-[#8c6d31]"></span>
+                  </div>
+                  <span class="block text-xs font-semibold text-charcoal leading-snug">Tahitian Black Pearl</span>
+                  <span class="text-[10px] text-charcoal/50 block">Peacock Iridescent</span>
+                  <span class="text-[11px] text-gold-600 font-bold mt-0.5 block">₹899</span>
+                </button>
+
+                <!-- 4. Rose Gold Blush Pearl -->
+                <button type="button" onclick="pickBase('pearl_rose_gold', this, 'Rose Gold Blush Pearl', 849)" class="base-option-card p-3 rounded-xl border text-left transition border-gold-500/25 hover:border-gold-500/60 bg-ivory" data-base="pearl_rose_gold">
+                  <div class="flex items-center gap-1.5 mb-2">
+                    <span class="w-4.5 h-4.5 rounded-full bg-gradient-to-br from-[#ffe4e6] via-[#fb7185] to-[#9f1239] shadow-xs border border-white/60"></span>
+                    <span class="w-3.5 h-3.5 rounded-full bg-gradient-to-br from-[#ffe4e6] to-[#fda4af]"></span>
+                  </div>
+                  <span class="block text-xs font-semibold text-charcoal leading-snug">Rose Gold Blush</span>
+                  <span class="text-[10px] text-charcoal/50 block">Sunset Metallic Nacre</span>
+                  <span class="text-[11px] text-gold-600 font-bold mt-0.5 block">₹849</span>
+                </button>
+
+                <!-- 5. South Sea Champagne Gold Pearl -->
+                <button type="button" onclick="pickBase('pearl_golden', this, 'South Sea Champagne Gold Pearl', 899)" class="base-option-card p-3 rounded-xl border text-left transition border-gold-500/25 hover:border-gold-500/60 bg-ivory" data-base="pearl_golden">
+                  <div class="flex items-center gap-1.5 mb-2">
+                    <span class="w-4.5 h-4.5 rounded-full bg-gradient-to-br from-[#fef9c3] via-[#eab308] to-[#854d0e] shadow-xs border border-amber-200/50"></span>
+                    <span class="w-3.5 h-3.5 rounded-full bg-gradient-to-br from-[#ffecb3] via-[#c5a059] to-[#8c6d31]"></span>
+                  </div>
+                  <span class="block text-xs font-semibold text-charcoal leading-snug">Champagne Gold Pearl</span>
+                  <span class="text-[10px] text-charcoal/50 block">Royal Honey Luster</span>
+                  <span class="text-[11px] text-gold-600 font-bold mt-0.5 block">₹899</span>
+                </button>
+
+                <!-- 6. Lavender Lilac Shimmer Pearl -->
+                <button type="button" onclick="pickBase('pearl_lavender', this, 'Lavender Lilac Pearl', 829)" class="base-option-card p-3 rounded-xl border text-left transition border-gold-500/25 hover:border-gold-500/60 bg-ivory" data-base="pearl_lavender">
+                  <div class="flex items-center gap-1.5 mb-2">
+                    <span class="w-4.5 h-4.5 rounded-full bg-gradient-to-br from-[#f3e8ff] via-[#c084fc] to-[#6b21a8] shadow-xs border border-purple-200/50"></span>
+                    <span class="w-3.5 h-3.5 rounded-full bg-gradient-to-br from-[#ffffff] to-[#e2e8f0]"></span>
+                  </div>
+                  <span class="block text-xs font-semibold text-charcoal leading-snug">Lavender Lilac Pearl</span>
+                  <span class="text-[10px] text-charcoal/50 block">Pastel Shimmer Glaze</span>
+                  <span class="text-[11px] text-gold-600 font-bold mt-0.5 block">₹829</span>
+                </button>
+
+                <!-- 7. Pearl & Amber Crystal Glow -->
+                <button type="button" onclick="pickBase('amber_glass', this, 'Pearl & Amber Crystal Glow', 799)" class="base-option-card p-3 rounded-xl border text-left transition border-gold-500/25 hover:border-gold-500/60 bg-ivory" data-base="amber_glass">
+                  <div class="flex items-center gap-1.5 mb-2">
+                    <span class="w-4 h-4 rounded-full bg-gradient-to-br from-[#ffe082] via-[#f59e0b] to-[#b45309] shadow-xs"></span>
+                    <span class="w-4 h-4 rounded-full bg-gradient-to-br from-[#ffffff] via-[#fffaf0] to-[#ded5c7] shadow-xs"></span>
+                  </div>
+                  <span class="block text-xs font-semibold text-charcoal leading-snug">Amber Crystal & Pearl</span>
+                  <span class="text-[10px] text-charcoal/50 block">Honey Rondelle Cut</span>
+                  <span class="text-[11px] text-gold-600 font-bold mt-0.5 block">₹799</span>
+                </button>
+
+                <!-- 8. Pearl & Blush Heishi Clay Mix -->
+                <button type="button" onclick="pickBase('pink_heishi', this, 'Pearl & Blush Heishi Clay Mix', 699)" class="base-option-card p-3 rounded-xl border text-left transition border-gold-500/25 hover:border-gold-500/60 bg-ivory" data-base="pink_heishi">
+                  <div class="flex items-center gap-1.5 mb-2">
+                    <span class="w-4 h-4 rounded-full bg-gradient-to-br from-[#ffd3d3] to-[#e49999] shadow-xs"></span>
+                    <span class="w-4 h-4 rounded-full bg-gradient-to-br from-[#ffffff] to-[#ded5c7]"></span>
+                    <span class="w-3.5 h-3.5 rounded-full bg-gradient-to-br from-[#ffe082] to-[#c5a059]"></span>
+                  </div>
+                  <span class="block text-xs font-semibold text-charcoal leading-snug">Pearl & Blush Heishi</span>
+                  <span class="text-[10px] text-charcoal/50 block">Pink Clay + Pearl</span>
+                  <span class="text-[11px] text-gold-600 font-bold mt-0.5 block">₹699</span>
+                </button>
+
+                <!-- 9. Raw Turquoise Nuggets & Gold -->
+                <button type="button" onclick="pickBase('turquoise', this, 'Raw Turquoise Nuggets & Gold', 799)" class="base-option-card p-3 rounded-xl border text-left transition border-gold-500/25 hover:border-gold-500/60 bg-ivory" data-base="turquoise">
+                  <div class="flex items-center gap-1.5 mb-2">
+                    <span class="w-4 h-3.5 rounded-xs bg-gradient-to-br from-[#5eead4] via-[#14b8a6] to-[#0f766e] shadow-xs border border-[#99f6e4]/40"></span>
+                    <span class="w-3 h-3 rounded-full bg-gradient-to-br from-[#ffe082] to-[#c5a059]"></span>
+                  </div>
+                  <span class="block text-xs font-semibold text-charcoal leading-snug">Turquoise Nuggets</span>
+                  <span class="text-[10px] text-charcoal/50 block">Natural Stone + Gold</span>
+                  <span class="text-[11px] text-gold-600 font-bold mt-0.5 block">₹799</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- TAB 2: NAME & INITIALS -->
+            <div id="tab-letters" class="atelier-tab-pane hidden space-y-4">
+              <div class="flex justify-between items-center">
+                <span class="text-xs font-cinzel font-bold text-charcoal">3D Gold Embossed Initial Beads</span>
+                <span class="text-[11px] text-gold-600 font-semibold">+₹30 per letter</span>
+              </div>
+
+              <div class="relative">
+                <input type="text" id="nameInput" maxlength="8" placeholder="TYPE INITIAL (E.G. A, S, NOOR, RAIN)" oninput="handleWordInput(this.value)" class="w-full bg-ivory border border-gold-500/40 rounded-xl px-4 py-3 text-charcoal font-cinzel font-bold text-base tracking-[0.2em] focus:outline-none focus:border-gold-500 uppercase placeholder:text-charcoal/30 shadow-inner">
+                <button type="button" onclick="handleWordInput('')" class="absolute right-3 top-3.5 text-xs text-charcoal/50 hover:text-charcoal px-2 py-0.5 rounded-md bg-white border border-gold-500/25">Clear</button>
+              </div>
+
+              <div>
+                <span class="text-[11px] text-charcoal/60 block mb-1.5">Quick Presets:</span>
+                <div class="flex items-center gap-2 flex-wrap">
+                  <button type="button" onclick="handleWordInput('A')" class="px-3 py-1.5 rounded-lg bg-ivory border border-gold-500/30 text-charcoal font-cinzel font-bold text-xs hover:border-gold-500">A</button>
+                  <button type="button" onclick="handleWordInput('S')" class="px-3 py-1.5 rounded-lg bg-ivory border border-gold-500/30 text-charcoal font-cinzel font-bold text-xs hover:border-gold-500">S</button>
+                  <button type="button" onclick="handleWordInput('NOOR')" class="px-3.5 py-1.5 rounded-lg bg-ivory border border-gold-500/30 text-charcoal font-cinzel font-bold text-xs hover:border-gold-500">NOOR</button>
+                  <button type="button" onclick="handleWordInput('LOVE')" class="px-3.5 py-1.5 rounded-lg bg-ivory border border-gold-500/30 text-charcoal font-cinzel font-bold text-xs hover:border-gold-500">LOVE</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 3: 10 REALISTIC HANDCRAFTED CHARMS -->
+            <div id="tab-charms" class="atelier-tab-pane hidden space-y-3">
+              <div class="flex justify-between items-center">
+                <span class="text-xs font-cinzel font-bold text-charcoal">10 Handcrafted Artisan Charms</span>
+                <span class="text-[11px] text-gold-600 font-semibold" id="activeCharmLabel">Gold Starfish (+₹100)</span>
+              </div>
+
+              <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                <!-- 1. Starfish -->
+                <button type="button" onclick="pickCharm('starfish', this, 'Gold Starfish', 100)" class="charm-option-card p-2.5 rounded-xl border text-center transition border-gold-500 bg-gold-500/10 text-charcoal shadow-xs active-charm flex flex-col items-center" data-charm="starfish">
+                  <div class="charm-medallion mb-1.5">
+                    <svg viewBox="0 0 24 24" class="w-6 h-6 text-[#C5A059]" fill="currentColor">
+                      <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9" />
+                    </svg>
+                  </div>
+                  <span class="text-xs font-semibold block leading-tight">Gold Starfish</span>
+                  <span class="text-[9.5px] text-charcoal/50 block">Marine 18K Mesh</span>
+                  <span class="text-[11px] text-gold-600 font-bold mt-0.5 block">+₹100</span>
+                </button>
+
+                <!-- 2. Pavé Butterfly -->
+                <button type="button" onclick="pickCharm('butterfly', this, 'Pavé Butterfly', 150)" class="charm-option-card p-2.5 rounded-xl border text-center transition border-gold-500/25 hover:border-gold-500/60 text-charcoal bg-ivory flex flex-col items-center" data-charm="butterfly">
+                  <div class="charm-medallion mb-1.5">
+                    <svg viewBox="0 0 24 24" class="w-6 h-6 text-[#DFC07B]" fill="none" stroke="currentColor" stroke-width="1.8">
+                      <path d="M12 12c-2-4-7-5-9-2s0 8 4 7c2-1 3-3 5-5z" fill="#FFF5D6" />
+                      <path d="M12 12c2-4 7-5 9-2s0 8-4 7c-2-1-3-3-5-5z" fill="#FFF5D6" />
+                      <circle cx="12" cy="12" r="1.5" fill="#C5A059" />
+                    </svg>
+                  </div>
+                  <span class="text-xs font-semibold block leading-tight">Pavé Butterfly</span>
+                  <span class="text-[9.5px] text-charcoal/50 block">Crystal Pavé Wings</span>
+                  <span class="text-[11px] text-gold-600 font-bold mt-0.5 block">+₹150</span>
+                </button>
+
+                <!-- 3. Enamel Seashell -->
+                <button type="button" onclick="pickCharm('shell', this, 'Enamel Seashell', 120)" class="charm-option-card p-2.5 rounded-xl border text-center transition border-gold-500/25 hover:border-gold-500/60 text-charcoal bg-ivory flex flex-col items-center" data-charm="shell">
+                  <div class="charm-medallion mb-1.5">
+                    <svg viewBox="0 0 24 24" class="w-6 h-6 text-[#C5A059]" fill="none" stroke="currentColor" stroke-width="1.6">
+                      <path d="M12 21c-5 0-9-4-9-9 0-3 3-8 9-10 6 2 9 7 9 10 0 5-4 9-9 9z" fill="#FFFFFF" />
+                      <path d="M12 2v19M7 6c1 5 3 9 5 15M17 6c-1 5-3 9-5 15" stroke="#DFC07B" stroke-width="1.2" />
+                    </svg>
+                  </div>
+                  <span class="text-xs font-semibold block leading-tight">Enamel Seashell</span>
+                  <span class="text-[9.5px] text-charcoal/50 block">Fluted Pearl Shell</span>
+                  <span class="text-[11px] text-gold-600 font-bold mt-0.5 block">+₹120</span>
+                </button>
+
+                <!-- 4. Puffy Gold Heart -->
+                <button type="button" onclick="pickCharm('heart', this, 'Puffy Gold Heart', 100)" class="charm-option-card p-2.5 rounded-xl border text-center transition border-gold-500/25 hover:border-gold-500/60 text-charcoal bg-ivory flex flex-col items-center" data-charm="heart">
+                  <div class="charm-medallion mb-1.5">
+                    <svg viewBox="0 0 24 24" class="w-6 h-6 text-[#C5A059]" fill="currentColor">
+                      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                  </div>
+                  <span class="text-xs font-semibold block leading-tight">Puffy Gold Heart</span>
+                  <span class="text-[9.5px] text-charcoal/50 block">Volumetric 18K Heart</span>
+                  <span class="text-[11px] text-gold-600 font-bold mt-0.5 block">+₹100</span>
+                </button>
+
+                <!-- 5. Nazar Evil Eye -->
+                <button type="button" onclick="pickCharm('evil_eye', this, 'Evil Eye Nazar', 130)" class="charm-option-card p-2.5 rounded-xl border text-center transition border-gold-500/25 hover:border-gold-500/60 text-charcoal bg-ivory flex flex-col items-center" data-charm="evil_eye">
+                  <div class="charm-medallion mb-1.5">
+                    <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none">
+                      <circle cx="12" cy="12" r="9" fill="#1D4ED8" stroke="#C5A059" stroke-width="1.8"/>
+                      <circle cx="12" cy="12" r="6" fill="#FFFFFF"/>
+                      <circle cx="12" cy="12" r="3.5" fill="#60A5FA"/>
+                      <circle cx="12" cy="12" r="1.8" fill="#1E293B"/>
+                    </svg>
+                  </div>
+                  <span class="text-xs font-semibold block leading-tight">Evil Eye Nazar</span>
+                  <span class="text-[9.5px] text-charcoal/50 block">Cobalt Glass + Gold</span>
+                  <span class="text-[11px] text-gold-600 font-bold mt-0.5 block">+₹130</span>
+                </button>
+
+                <!-- 6. Emerald Clover -->
+                <button type="button" onclick="pickCharm('clover', this, 'Lucky Emerald Clover', 120)" class="charm-option-card p-2.5 rounded-xl border text-center transition border-gold-500/25 hover:border-gold-500/60 text-charcoal bg-ivory flex flex-col items-center" data-charm="clover">
+                  <div class="charm-medallion mb-1.5">
+                    <svg viewBox="0 0 24 24" class="w-6 h-6 text-[#047857]" fill="currentColor" stroke="#C5A059" stroke-width="1.2">
+                      <path d="M12 12c-2-3-5-3-5 0s3 5 5 2c0 0 0 0 0 0zm0 0c2-3 5-3 5 0s-3 5-5 2zm0 0c-3-2-3-5 0-5s5 3 2 5zm0 0c-3 2-3 5 0 5s5-3 2-5z" />
+                    </svg>
+                  </div>
+                  <span class="text-xs font-semibold block leading-tight">Emerald Clover</span>
+                  <span class="text-[9.5px] text-charcoal/50 block">Lucky 4-Leaf 18K</span>
+                  <span class="text-[11px] text-gold-600 font-bold mt-0.5 block">+₹120</span>
+                </button>
+
+                <!-- 7. Crescent Moon -->
+                <button type="button" onclick="pickCharm('crescent_moon', this, 'Celestial Crescent Moon', 110)" class="charm-option-card p-2.5 rounded-xl border text-center transition border-gold-500/25 hover:border-gold-500/60 text-charcoal bg-ivory flex flex-col items-center" data-charm="crescent_moon">
+                  <div class="charm-medallion mb-1.5">
+                    <svg viewBox="0 0 24 24" class="w-6 h-6 text-[#C5A059]" fill="currentColor">
+                      <path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/>
+                    </svg>
+                  </div>
+                  <span class="text-xs font-semibold block leading-tight">Crescent Moon</span>
+                  <span class="text-[9.5px] text-charcoal/50 block">Celestial 18K Polish</span>
+                  <span class="text-[11px] text-gold-600 font-bold mt-0.5 block">+₹110</span>
+                </button>
+
+                <!-- 8. Keshi Pearl Drop -->
+                <button type="button" onclick="pickCharm('keshi', this, 'Keshi Pearl Drop', 140)" class="charm-option-card p-2.5 rounded-xl border text-center transition border-gold-500/25 hover:border-gold-500/60 text-charcoal bg-ivory flex flex-col items-center" data-charm="keshi">
+                  <div class="charm-medallion mb-1.5">
+                    <div class="w-5 h-6 rounded-full bg-gradient-to-br from-[#ffffff] via-[#fffbf2] to-[#d6c4b2] border border-white shadow-xs"></div>
+                  </div>
+                  <span class="text-xs font-semibold block leading-tight">Keshi Pearl Drop</span>
+                  <span class="text-[9.5px] text-charcoal/50 block">Organic Baroque Nacre</span>
+                  <span class="text-[11px] text-gold-600 font-bold mt-0.5 block">+₹140</span>
+                </button>
+
+                <!-- 9. Cyber Star -->
+                <button type="button" onclick="pickCharm('cyber_star', this, 'Silver Cyber Star', 100)" class="charm-option-card p-2.5 rounded-xl border text-center transition border-gold-500/25 hover:border-gold-500/60 text-charcoal bg-ivory flex flex-col items-center" data-charm="cyber_star">
+                  <div class="charm-medallion mb-1.5">
+                    <svg viewBox="0 0 24 24" class="w-6 h-6 text-[#94A3B8]" fill="currentColor">
+                      <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/>
+                    </svg>
+                  </div>
+                  <span class="text-xs font-semibold block leading-tight">Cyber Star</span>
+                  <span class="text-[9.5px] text-charcoal/50 block">Y2K Chrome Star</span>
+                  <span class="text-[11px] text-gold-600 font-bold mt-0.5 block">+₹100</span>
+                </button>
+
+                <!-- 10. Minimal Clasp -->
+                <button type="button" onclick="pickCharm('none', this, 'Minimalist Clasp', 0)" class="charm-option-card p-2.5 rounded-xl border text-center transition border-gold-500/25 hover:border-gold-500/60 text-charcoal bg-ivory flex flex-col items-center" data-charm="none">
+                  <div class="charm-medallion mb-1.5">
+                    <div class="w-5 h-5 rounded-full border-2 border-dashed border-[#C5A059]/60"></div>
+                  </div>
+                  <span class="text-xs font-semibold block leading-tight">Minimal Clasp</span>
+                  <span class="text-[9.5px] text-charcoal/50 block">Pure Unadorned Strand</span>
+                  <span class="text-[11px] text-gold-600 font-bold mt-0.5 block">₹0</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- TAB 4: WRIST SIZING -->
+            <div id="tab-sizing" class="atelier-tab-pane hidden space-y-4">
+              <div class="flex justify-between items-center">
+                <span class="text-xs font-cinzel font-bold text-charcoal">Wrist Circumference (cm)</span>
+                <span id="sliderSizeDisplay" class="text-xs text-gold-600 font-bold font-mono">16.5 cm (Standard Hand)</span>
+              </div>
+
+              <div class="space-y-3 pt-2">
+                <input type="range" id="sizeRangeSlider" min="14" max="20" step="0.5" value="16.5" oninput="handleSizeChange(this.value)" class="w-full">
+                
+                <div class="flex justify-between text-[10px] text-charcoal/60 font-mono">
+                  <span>14.0 cm<br>(Petite)</span>
+                  <span class="text-center">16.5 cm<br>(Standard)</span>
+                  <span class="text-center">18.5 cm<br>(Comfort)</span>
+                  <span class="text-right">20.0 cm<br>(Relaxed)</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SIGNATURE CATALOG -->
+    <section id="gallery" class="py-14 sm:py-20 px-3 sm:px-6 bg-ivory border-b border-gold-500/20 relative">
+      <div class="max-w-7xl mx-auto space-y-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 text-center sm:text-left">
+          <div>
+            <div class="flex items-center justify-center sm:justify-start gap-2 mb-1">
+              <span class="text-[10px] uppercase tracking-widest text-gold-600 font-bold">From The Workshop</span>
+              <span id="galleryCountBadge" class="inline-flex items-center text-[10px] bg-gold-500/10 text-gold-700 px-2.5 py-0.5 rounded-full font-semibold border border-gold-500/20">
+                8 Real Creations
+              </span>
+            </div>
+            <h2 class="font-cormorant text-2xl sm:text-4xl text-charcoal font-normal">
+              Signature Hand Creations
+            </h2>
+            <p class="text-xs text-espresso/70 font-light mt-0.5">
+              Handcrafted in India by NYUMI NOOR. Tap "Customize This Design" to load into the 3D customizer.
+            </p>
+          </div>
+        </div>
+
+        <div id="readyMadeGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+
+      </div>
+    </section>
+
+    <!-- INSTAGRAM & COMMUNITY -->
+    <section id="contact" class="py-16 sm:py-20 bg-cashmere/50 border-b border-gold-500/20 relative">
+      <div class="max-w-3xl mx-auto px-4 text-center space-y-6">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-gold-500/40 bg-white shadow-xs">
+          <span class="text-[10px] uppercase tracking-[0.25em] text-gold-700 font-bold">Official Atelier Page</span>
+        </div>
+
+        <div class="space-y-2">
+          <h2 class="font-cormorant text-3xl sm:text-4xl text-charcoal font-normal">
+            Handcrafted With Devotion in India
+          </h2>
+          <p class="text-espresso/80 font-light text-xs sm:text-sm max-w-md mx-auto leading-relaxed">
+            Follow our beading drops and artisan custom stacks on Instagram.
+          </p>
+        </div>
+
+        <div class="max-w-sm mx-auto p-6 rounded-2xl bg-white border border-gold-500/30 shadow-md space-y-5">
+          <span class="text-4xl">✨</span>
+          <div>
+            <span class="text-[10px] uppercase tracking-[0.28em] text-charcoal/60 font-semibold block">Instagram Handle</span>
+            <a href="https://instagram.com/nyumi.noor" target="_blank" rel="noopener noreferrer" class="font-cinzel text-xl sm:text-2xl font-bold text-charcoal hover:text-gold-600 transition-colors block mt-0.5">
+              @nyumi.noor
+            </a>
+            <span class="inline-block mt-2 text-[11px] text-emerald-800 font-medium bg-emerald-50 px-3 py-0.5 rounded-full border border-emerald-300">
+              DM us for Custom Hand Measurements
+            </span>
+          </div>
+
+          <div class="pt-3 border-t border-gold-500/20 flex flex-col sm:flex-row gap-2">
+            <a href="https://instagram.com/nyumi.noor" target="_blank" rel="noopener noreferrer" class="flex-1 py-2.5 px-3 rounded-full bg-gradient-to-r from-[#DD2A7B] to-[#8134AF] text-white font-bold text-xs uppercase tracking-wider hover:brightness-105 transition shadow-xs flex items-center justify-center gap-1.5">
+              <span>Follow @nyumi.noor</span>
+            </a>
+
+            <button onclick="orderViaWhatsAppCart()" class="flex-1 py-2.5 px-3 rounded-full border border-emerald-600/40 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 font-bold text-xs uppercase tracking-wider transition flex items-center justify-center gap-1.5">
+              <span>WhatsApp Us</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-ivory border-t border-gold-500/20 py-10 px-4 sm:px-8 text-charcoal/70 text-xs">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-5 text-center md:text-left">
+      <div>
+        <span class="font-cinzel text-sm sm:text-base text-charcoal tracking-[0.25em] font-bold block">NYUMI NOOR</span>
+        <p class="text-charcoal/60 font-light text-xs mt-0.5">
+          Handmade bracelets crafted exclusively for hands and wrists.
+        </p>
+      </div>
+
+      <div class="flex items-center space-x-5 text-gold-600 font-medium text-xs">
+        <a href="#atelier" class="hover:text-charcoal transition">Custom Atelier</a>
+        <a href="#gallery" class="hover:text-charcoal transition">Signature Pieces</a>
+        <a href="https://instagram.com/nyumi.noor" target="_blank" rel="noopener noreferrer" class="hover:text-charcoal transition">@nyumi.noor</a>
+        <button type="button" onclick="openOwnerPinModal()" class="text-charcoal/60 hover:text-gold-600 transition flex items-center gap-1.5 px-2.5 py-1 rounded-md border border-gold-500/30 bg-white shadow-2xs cursor-pointer" title="Atelier Owner Access">
+          <span>🔑</span>
+          <span class="text-[10px] tracking-wider uppercase font-cinzel font-bold">Atelier Access</span>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- DEDICATED IN-APP OWNER PIN MODAL -->
+  <div id="ownerPinModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-charcoal/70 backdrop-blur-sm">
+    <div class="bg-white rounded-2xl max-w-sm w-full p-6 border-2 border-gold-500 shadow-2xl space-y-4">
+      <div class="text-center space-y-1">
+        <div class="w-12 h-12 mx-auto rounded-full bg-gold-500/10 border border-gold-500 flex items-center justify-center text-xl mb-2">
+          🔑
+        </div>
+        <h3 class="font-cinzel text-lg font-bold text-charcoal tracking-wider">Atelier Owner Access</h3>
+        <p class="text-xs text-charcoal/60">Enter your 4-digit studio passcode to manage cards and enable deletions.</p>
+      </div>
+
+      <div class="space-y-2">
+        <input type="password" id="ownerPinInput" maxlength="6" placeholder="Enter PIN (Default: 1234)" class="w-full text-center text-xl tracking-[0.4em] font-mono py-2.5 px-3 rounded-xl border border-gold-500/50 bg-ivory focus:outline-none focus:border-gold-500">
+        <p id="ownerPinError" class="text-red-500 text-[11px] font-semibold text-center hidden">Incorrect Passcode. Try 1234.</p>
+      </div>
+
+      <div class="flex gap-2 pt-2">
+        <button type="button" onclick="closeOwnerPinModal()" class="flex-1 py-2.5 rounded-full border border-charcoal/20 text-charcoal font-semibold text-xs uppercase tracking-wider hover:bg-cashmere transition">
+          Cancel
+        </button>
+        <button type="button" onclick="verifyOwnerPin()" class="flex-1 py-2.5 rounded-full bg-gradient-to-r from-gold-500 to-gold-600 text-white font-bold text-xs uppercase tracking-wider hover:brightness-105 shadow-md transition">
+          Unlock
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADD NEW BRACELET MODAL (FOR OWNER) -->
+  <div id="addBraceletModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-charcoal/70 backdrop-blur-sm">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 border border-gold-500 shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto">
+      <div class="flex justify-between items-center border-b border-gold-500/20 pb-2">
+        <h3 class="font-cinzel text-base font-bold text-charcoal">Add New Real Bracelet Photo</h3>
+        <button onclick="closeAddBraceletModal()" class="text-charcoal/50 hover:text-charcoal text-lg">✕</button>
+      </div>
+
+      <div class="space-y-3 text-xs">
+        <div>
+          <label class="block font-semibold mb-1">Select Photo from Device</label>
+          <input type="file" id="newBraceletPhoto" accept="image/*" class="w-full py-1.5 px-2 border rounded-lg bg-ivory">
+        </div>
+
+        <div>
+          <label class="block font-semibold mb-1">Bracelet Title</label>
+          <input type="text" id="newBraceletTitle" placeholder="e.g. Lavender Pearl & Butterfly" class="w-full py-2 px-3 border rounded-lg bg-ivory font-cinzel">
+        </div>
+
+        <div>
+          <label class="block font-semibold mb-1">Price (₹ INR)</label>
+          <input type="number" id="newBraceletPrice" placeholder="e.g. 799" class="w-full py-2 px-3 border rounded-lg bg-ivory font-bold">
+        </div>
+
+        <div>
+          <label class="block font-semibold mb-1">Handcrafted Description</label>
+          <textarea id="newBraceletDesc" rows="2" placeholder="Describe the pearls, beads and charm..." class="w-full py-2 px-3 border rounded-lg bg-ivory"></textarea>
+        </div>
+
+        <div>
+          <label class="block font-semibold mb-1">Link to 3D Customizer Base</label>
+          <select id="newBraceletBase" class="w-full py-2 px-3 border rounded-lg bg-ivory">
+            <option value="pearl_white">Classic Akoya White Pearl</option>
+            <option value="pearl_multi_mix">Multiverse Pastel Pearl Mix</option>
+            <option value="pearl_tahitian">Tahitian Peacock Black Pearl</option>
+            <option value="pearl_rose_gold">Rose Gold Blush Pearl</option>
+            <option value="pearl_golden">South Sea Champagne Gold Pearl</option>
+            <option value="pearl_lavender">Lavender Lilac Shimmer Pearl</option>
+            <option value="amber_glass">Pearl & Amber Crystal Glow</option>
+            <option value="pink_heishi">Pearl & Blush Heishi Clay Mix</option>
+            <option value="turquoise">Raw Turquoise Nuggets & Gold</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="flex gap-2 pt-2 border-t border-gold-500/20">
+        <button type="button" onclick="closeAddBraceletModal()" class="flex-1 py-2.5 rounded-full border border-charcoal/20 text-charcoal font-semibold text-xs uppercase">
+          Cancel
+        </button>
+        <button type="button" onclick="saveNewBracelet()" class="flex-1 py-2.5 rounded-full bg-gold-500 text-white font-bold text-xs uppercase hover:brightness-105 shadow-md">
+          Publish Card
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHOPPING BAG DRAWER -->
+  <div id="cartDrawer" class="fixed inset-0 z-50 pointer-events-none transition-opacity duration-300 opacity-0">
+    <div onclick="toggleCartDrawer(false)" class="absolute inset-0 bg-charcoal/50 backdrop-blur-xs"></div>
+    <div class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-white shadow-2xl flex flex-col pointer-events-auto transform transition-transform duration-300 translate-x-full" id="cartContentPanel">
+      <div class="p-4 sm:p-5 border-b border-gold-500/20 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="font-cinzel font-bold text-base text-charcoal">Your Selection</span>
+          <span id="drawerBagCount" class="bg-gold-500/20 text-gold-700 text-xs px-2 py-0.5 rounded-full font-bold">0</span>
+        </div>
+        <button onclick="toggleCartDrawer(false)" class="p-1 rounded-full text-charcoal/50 hover:text-charcoal hover:bg-cashmere text-base">✕</button>
+      </div>
+
+      <div id="cartItemList" class="flex-1 overflow-y-auto p-4 space-y-3">
+        <div id="emptyCartView" class="h-full flex flex-col items-center justify-center text-center p-6 space-y-3">
+          <span class="text-4xl text-charcoal/20">📿</span>
+          <p class="font-cinzel text-xs text-charcoal/50 uppercase tracking-widest">Your Bag is Empty</p>
+          <a href="#atelier" onclick="toggleCartDrawer(false); SoundEngine.playChime();" class="px-5 py-2 rounded-full bg-gold-500 text-white font-bold text-xs uppercase hover:bg-gold-600 transition">Design A Piece</a>
+        </div>
+      </div>
+
+      <div class="p-4 sm:p-5 border-t border-gold-500/20 bg-ivory space-y-3">
+        <div class="flex justify-between items-baseline">
+          <span class="font-cinzel text-xs text-charcoal uppercase tracking-wider font-bold">Subtotal:</span>
+          <span id="cartSubtotalDisplay" class="font-cormorant text-2xl font-bold text-gold-600">₹0</span>
+        </div>
+        <button onclick="orderViaWhatsAppCart()" class="w-full py-3 rounded-full bg-emerald-600 text-white font-bold text-xs uppercase tracking-wider hover:bg-emerald-700 transition flex items-center justify-center gap-2 shadow-md">
+          <span>Checkout via WhatsApp</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT BULLETPROOF ENGINE -->
+  <script>
+    // -------------------------------------------------------------
+    // 1. ACOUSTIC JEWELRY SOUND ENGINE (WEB AUDIO API SYNTHESIZER)
+    // -------------------------------------------------------------
+    const SoundEngine = {
+      ctx: null,
+      enabled: true,
+
+      init() {
+        if (!this.ctx) {
+          const AudioCtx = window.AudioContext || window.webkitAudioContext;
+          if (AudioCtx) this.ctx = new AudioCtx();
+        }
+        if (this.ctx && this.ctx.state === 'suspended') {
+          this.ctx.resume();
+        }
+      },
+
+      playChime(freq = 880) {
+        if (!this.enabled) return;
+        this.init();
+        if (!this.ctx) return;
+
+        try {
+          const now = this.ctx.currentTime;
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, now);
+          osc.frequency.exponentialRampToValueAtTime(freq * 0.98, now + 0.35);
+
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+
+          osc.start(now);
+          osc.stop(now + 0.36);
+        } catch (e) {}
+      },
+
+      playBeadSound() {
+        if (!this.enabled) return;
+        this.init();
+        if (!this.ctx) return;
+
+        try {
+          const now = this.ctx.currentTime;
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+
+          osc.type = 'triangle';
+          const f = 1100 + Math.random() * 300;
+          osc.frequency.setValueAtTime(f, now);
+          osc.frequency.exponentialRampToValueAtTime(f * 0.5, now + 0.08);
+
+          gain.gain.setValueAtTime(0.18, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+
+          osc.start(now);
+          osc.stop(now + 0.09);
+        } catch (e) {}
+      },
+
+      playCharmDing() {
+        if (!this.enabled) return;
+        this.init();
+        if (!this.ctx) return;
+
+        try {
+          const now = this.ctx.currentTime;
+          [1318.5, 2637].forEach((f, idx) => {
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(f, now);
+
+            const vol = idx === 0 ? 0.22 : 0.08;
+            gain.gain.setValueAtTime(vol, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.45);
+
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+
+            osc.start(now);
+            osc.stop(now + 0.46);
+          });
+        } catch (e) {}
+      },
+
+      playLetterClick() {
+        if (!this.enabled) return;
+        this.init();
+        if (!this.ctx) return;
+
+        try {
+          const now = this.ctx.currentTime;
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+
+          osc.type = 'square';
+          osc.frequency.setValueAtTime(1450, now);
+          osc.frequency.exponentialRampToValueAtTime(400, now + 0.05);
+
+          gain.gain.setValueAtTime(0.08, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+
+          osc.start(now);
+          osc.stop(now + 0.06);
+        } catch (e) {}
+      },
+
+      playOrbitSwish() {
+        if (!this.enabled) return;
+        this.init();
+        if (!this.ctx) return;
+
+        try {
+          const now = this.ctx.currentTime;
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(320, now);
+          osc.frequency.linearRampToValueAtTime(450, now + 0.06);
+
+          gain.gain.setValueAtTime(0.05, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.07);
+
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+
+          osc.start(now);
+          osc.stop(now + 0.08);
+        } catch (e) {}
+      },
+
+      playBagSound() {
+        if (!this.enabled) return;
+        this.init();
+        if (!this.ctx) return;
+
+        try {
+          const notes = [523.25, 659.25, 783.99, 1046.50];
+          notes.forEach((freq, idx) => {
+            const now = this.ctx.currentTime + idx * 0.06;
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(freq, now);
+
+            gain.gain.setValueAtTime(0.18, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+
+            osc.start(now);
+            osc.stop(now + 0.36);
+          });
+        } catch (e) {}
+      }
+    };
+
+    function toggleSoundEngine() {
+      SoundEngine.init();
+      SoundEngine.enabled = !SoundEngine.enabled;
+      document.getElementById('soundIcon').innerText = SoundEngine.enabled ? '🔊' : '🔇';
+      document.getElementById('soundText').innerText = SoundEngine.enabled ? 'Sound: ON' : 'Sound: OFF';
+      if (SoundEngine.enabled) SoundEngine.playChime(980);
+    }
+
+    // -------------------------------------------------------------
+    // 2. HERO IMAGE CONTROLLER & DIRECT PERSISTENCE
+    // -------------------------------------------------------------
+    function initHeroImage() {
+      const saved = localStorage.getItem('nyumi_hero_bg');
+      const img = document.getElementById('mainHeroImage');
+      if (saved && img) {
+        img.src = saved;
+      }
+    }
+
+    function handleHeroImgFallback(img) {
+      // If 1000360496.jpg isn't immediately resolved, try relative variations
+      if (!img.dataset.retried) {
+        img.dataset.retried = '1';
+        img.src = './1000360496.jpg';
+      } else if (img.dataset.retried === '1') {
+        img.dataset.retried = '2';
+        img.src = '1000360496.jpg';
+      } else {
+        // Deep elegant gradient so it never looks washed out
+        img.style.display = 'none';
+        document.getElementById('heroSection').style.background = 'radial-gradient(circle at center, #3d322b 0%, #171311 100%)';
+      }
+    }
+
+    function handleHeroFileDirect(input) {
+      if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const dataUrl = e.target.result;
+          localStorage.setItem('nyumi_hero_bg', dataUrl);
+          const img = document.getElementById('mainHeroImage');
+          img.src = dataUrl;
+          img.style.display = 'block';
+          SoundEngine.playCharmDing();
+          alert("Hero background photo updated with rich, crystal-clear contrast!");
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    // -------------------------------------------------------------
+    // 3. ATELIER STATE ARCHITECTURE
+    // -------------------------------------------------------------
+    const state = {
+      base: 'pearl_white',
+      baseName: 'Classic Akoya White Pearl',
+      basePrice: 799,
+      charm: 'starfish',
+      charmName: 'Gold Starfish',
+      charmPrice: 100,
+      word: '',
+      size: 16.5,
+      rotation: 0,
+      isSpinning: true,
+      viewMode: 'loop',
+      isDragging: false,
+      lastX: 0
+    };
+
+    const cart = [];
+
+    const defaultProducts = [
+      { id: 'prod_1', name: 'Blush Heishi Stack & Starfish', price: 799, base: 'pink_heishi', charm: 'starfish', desc: 'Blush polymer clay discs with lustrous pearls and 18K gold starfish.', img: '1000360413.jpg' },
+      { id: 'prod_2', name: 'Classic Pearl & Pink Cylinder', price: 649, base: 'pink_heishi', charm: 'none', desc: 'Smooth cultured white pearls paired with pastel pink clay cylinder beads.', img: '1000360371.jpg' },
+      { id: 'prod_3', name: 'Amber Glow & Pavé Butterfly', price: 849, base: 'amber_glass', charm: 'butterfly', desc: 'Translucent honey glass beads with high-luster pearls and sparkling pavé butterfly.', img: '1000360372.jpg' },
+      { id: 'prod_4', name: 'Pure Monogram Friendship Pearls', price: 699, base: 'pearl_white', charm: 'heart', desc: 'Lustrous pearls with golden monogram letter beads and puffy heart charm.', img: '1000356860.jpg' },
+      { id: 'prod_5', name: 'Aegean Sea Seed & Silver Star', price: 499, base: 'pearl_white', charm: 'cyber_star', desc: 'Delicate double-wrap royal blue glass seed beads intertwined with pearl white.', img: '1000356781.jpg' },
+      { id: 'prod_6', name: 'Raw Turquoise Nuggets & Gold', price: 799, base: 'turquoise', charm: 'heart', desc: 'Genuine raw turquoise tumbled chips interspersed with mirror-polished gold.', img: '1000356230.jpg' },
+      { id: 'prod_7', name: 'Faceted Ruby Rondelle & Heart', price: 749, base: 'pearl_rose_gold', charm: 'heart', desc: 'Brilliant faceted crimson ruby crystal glass beads alternated with seed pearls.', img: '1000356230.jpg' },
+      { id: 'prod_8', name: 'Royal Mulberry Wood & Gold', price: 699, base: 'pearl_golden', charm: 'none', desc: 'Natural plum-dyed satin wood spheres paired with 18K brushed gold accents.', img: '1000356229.jpg' }
+    ];
+
+    const canvas = document.getElementById('customizerCanvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+      const rect = canvas.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = Math.round(rect.width * dpr);
+      canvas.height = Math.round(rect.height * dpr);
+      render3DCanvas();
+    }
+
+    // MULTI-COLORED PEARL & MATERIAL SHADER
+    function draw3DSphere(x, y, radius, type, index) {
+      ctx.save();
+      ctx.translate(x, y);
+
+      ctx.beginPath();
+      ctx.arc(0, radius * 0.35, radius * 0.95, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(44, 37, 35, 0.14)';
+      ctx.fill();
+
+      const grad = ctx.createRadialGradient(
+        -radius * 0.35, -radius * 0.38, radius * 0.05,
+        0, 0, radius
+      );
+
+      if (type === 'pearl_white') {
+        grad.addColorStop(0, '#FFFFFF');
+        grad.addColorStop(0.35, '#FFFBF5');
+        grad.addColorStop(0.7, '#F7EDE1');
+        grad.addColorStop(0.92, '#E2D1BE');
+        grad.addColorStop(1, '#B9A18B');
+      } else if (type === 'pearl_multi_mix') {
+        const mod = index % 4;
+        if (mod === 0) {
+          grad.addColorStop(0, '#FFFFFF');
+          grad.addColorStop(0.35, '#FFDEE5');
+          grad.addColorStop(0.7, '#F8A5B9');
+          grad.addColorStop(1, '#B9526D');
+        } else if (mod === 1) {
+          grad.addColorStop(0, '#FFFFFF');
+          grad.addColorStop(0.35, '#F3E8FF');
+          grad.addColorStop(0.7, '#C084FC');
+          grad.addColorStop(1, '#6B21A8');
+        } else if (mod === 2) {
+          grad.addColorStop(0, '#FFFFEE');
+          grad.addColorStop(0.35, '#FDE047');
+          grad.addColorStop(0.7, '#CA8A04');
+          grad.addColorStop(1, '#713F12');
+        } else {
+          grad.addColorStop(0, '#FFF5D6');
+          grad.addColorStop(0.3, '#DFC07B');
+          grad.addColorStop(0.75, '#C5A059');
+          grad.addColorStop(1, '#7A5B20');
+        }
+      } else if (type === 'pearl_tahitian') {
+        grad.addColorStop(0, '#8AE8D4');
+        grad.addColorStop(0.2, '#3B5854');
+        grad.addColorStop(0.55, '#1B2C28');
+        grad.addColorStop(0.85, '#181C24');
+        grad.addColorStop(1, '#0B0D12');
+      } else if (type === 'pearl_rose_gold') {
+        grad.addColorStop(0, '#FFF1F2');
+        grad.addColorStop(0.3, '#FDA4AF');
+        grad.addColorStop(0.7, '#E11D48');
+        grad.addColorStop(0.95, '#881337');
+        grad.addColorStop(1, '#4C0519');
+      } else if (type === 'pearl_golden') {
+        grad.addColorStop(0, '#FEF9C3');
+        grad.addColorStop(0.3, '#EAB308');
+        grad.addColorStop(0.7, '#A16207');
+        grad.addColorStop(0.95, '#713F12');
+        grad.addColorStop(1, '#422006');
+      } else if (type === 'pearl_lavender') {
+        grad.addColorStop(0, '#FAF5FF');
+        grad.addColorStop(0.35, '#D8B4FE');
+        grad.addColorStop(0.7, '#9333EA');
+        grad.addColorStop(0.95, '#581C87');
+        grad.addColorStop(1, '#3B0764');
+      } else if (type === 'pink_heishi') {
+        if (index % 4 === 0) {
+          grad.addColorStop(0, '#FFF5D6');
+          grad.addColorStop(0.3, '#DFC07B');
+          grad.addColorStop(0.75, '#C5A059');
+          grad.addColorStop(1, '#7A5B20');
+        } else if (index % 2 === 0) {
+          grad.addColorStop(0, '#FFFFFF');
+          grad.addColorStop(0.5, '#F8F4EB');
+          grad.addColorStop(1, '#C7BAA9');
+        } else {
+          grad.addColorStop(0, '#FFE4E4');
+          grad.addColorStop(0.4, '#F5B5B5');
+          grad.addColorStop(0.85, '#D98B8B');
+          grad.addColorStop(1, '#A85F5F');
+        }
+      } else if (type === 'amber_glass') {
+        if (index % 2 === 0) {
+          grad.addColorStop(0, '#FFFAE0');
+          grad.addColorStop(0.25, '#F5C358');
+          grad.addColorStop(0.65, '#D98218');
+          grad.addColorStop(0.9, '#8F4A05');
+          grad.addColorStop(1, '#3A1B00');
+        } else {
+          grad.addColorStop(0, '#FFFFFF');
+          grad.addColorStop(0.4, '#FAF5EB');
+          grad.addColorStop(1, '#CFC0AE');
+        }
+      } else if (type === 'turquoise') {
+        grad.addColorStop(0, '#8FFAF3');
+        grad.addColorStop(0.35, '#2DC7BE');
+        grad.addColorStop(0.75, '#168A83');
+        grad.addColorStop(1, '#0E4A46');
+      }
+
+      ctx.beginPath();
+      ctx.arc(0, 0, radius, 0, Math.PI * 2);
+      ctx.fillStyle = grad;
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.arc(-radius * 0.32, -radius * 0.35, radius * 0.22, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.75)';
+      ctx.fill();
+
+      ctx.restore();
+    }
+
+    function draw3DLetterBead(x, y, radius, letter) {
+      ctx.save();
+      ctx.translate(x, y);
+
+      const grad = ctx.createRadialGradient(-radius * 0.3, -radius * 0.35, 1, 0, 0, radius);
+      grad.addColorStop(0, '#FFFFFF');
+      grad.addColorStop(0.6, '#F8F4EC');
+      grad.addColorStop(1, '#D5C7B6');
+
+      ctx.beginPath();
+      ctx.arc(0, 0, radius, 0, Math.PI * 2);
+      ctx.fillStyle = grad;
+      ctx.fill();
+
+      ctx.font = `bold ${Math.round(radius * 1.15)}px Montserrat, sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillStyle = '#8C6D31';
+      ctx.fillText(letter, 0.5, 0.5);
+      ctx.fillStyle = '#C5A059';
+      ctx.fillText(letter, 0, 0);
+
+      ctx.restore();
+    }
+
+    function draw3DCharm(x, y, charm) {
+      if (charm === 'none') return;
+      ctx.save();
+      ctx.translate(x, y);
+
+      ctx.beginPath();
+      ctx.arc(0, -16, 5.5, 0, Math.PI * 2);
+      ctx.strokeStyle = '#C5A059';
+      ctx.lineWidth = 2.5;
+      ctx.stroke();
+
+      if (charm === 'starfish') {
+        ctx.beginPath();
+        for (let i = 0; i < 5; i++) {
+          const outerA = (i * 72 - 90) * Math.PI / 180;
+          const innerA = ((i * 72) + 36 - 90) * Math.PI / 180;
+          const ox = Math.cos(outerA) * 16;
+          const oy = Math.sin(outerA) * 16 + 8;
+          const ix = Math.cos(innerA) * 7;
+          const iy = Math.sin(innerA) * 7 + 8;
+          if (i === 0) ctx.moveTo(ox, oy);
+          else ctx.lineTo(ox, oy);
+          ctx.lineTo(ix, iy);
+        }
+        ctx.closePath();
+        ctx.fillStyle = '#DFC07B';
+        ctx.fill();
+        ctx.strokeStyle = '#8C6D31';
+        ctx.lineWidth = 1.2;
+        ctx.stroke();
+      } else if (charm === 'butterfly') {
+        ctx.beginPath();
+        ctx.arc(-8, 4, 8, 0, Math.PI * 2);
+        ctx.arc(8, 4, 8, 0, Math.PI * 2);
+        ctx.fillStyle = '#FFF5D6';
+        ctx.fill();
+        ctx.strokeStyle = '#C5A059';
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(0, 5, 2.5, 0, Math.PI * 2);
+        ctx.fillStyle = '#C5A059';
+        ctx.fill();
+      } else if (charm === 'shell') {
+        ctx.beginPath();
+        ctx.arc(0, 6, 12, Math.PI, 0, false);
+        ctx.lineTo(0, 18);
+        ctx.closePath();
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fill();
+        ctx.strokeStyle = '#C5A059';
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+      } else if (charm === 'heart') {
+        ctx.beginPath();
+        ctx.moveTo(0, 4);
+        ctx.bezierCurveTo(-7, -4, -14, 4, 0, 16);
+        ctx.bezierCurveTo(14, 4, 7, -4, 0, 4);
+        ctx.fillStyle = '#C5A059';
+        ctx.fill();
+        ctx.strokeStyle = '#8C6D31';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      } else if (charm === 'evil_eye') {
+        ctx.beginPath();
+        ctx.arc(0, 8, 11, 0, Math.PI * 2);
+        ctx.fillStyle = '#1D4ED8';
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(0, 8, 7, 0, Math.PI * 2);
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(0, 8, 4, 0, Math.PI * 2);
+        ctx.fillStyle = '#60A5FA';
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(0, 8, 2, 0, Math.PI * 2);
+        ctx.fillStyle = '#1E293B';
+        ctx.fill();
+      } else if (charm === 'clover') {
+        for (let i = 0; i < 4; i++) {
+          const ang = (i * 90) * Math.PI / 180;
+          ctx.beginPath();
+          ctx.arc(Math.cos(ang) * 5, Math.sin(ang) * 5 + 8, 5, 0, Math.PI * 2);
+          ctx.fillStyle = '#047857';
+          ctx.fill();
+          ctx.strokeStyle = '#C5A059';
+          ctx.stroke();
+        }
+      } else if (charm === 'crescent_moon') {
+        ctx.beginPath();
+        ctx.arc(0, 8, 11, 0.4, Math.PI * 1.8);
+        ctx.bezierCurveTo(4, 3, 4, 13, 0, 8);
+        ctx.fillStyle = '#DFC07B';
+        ctx.fill();
+      } else if (charm === 'keshi') {
+        ctx.beginPath();
+        ctx.ellipse(0, 8, 8, 11, Math.PI / 12, 0, Math.PI * 2);
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fill();
+        ctx.strokeStyle = '#DFC07B';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      } else if (charm === 'cyber_star') {
+        ctx.beginPath();
+        ctx.moveTo(0, -2);
+        ctx.lineTo(3, 5);
+        ctx.lineTo(10, 8);
+        ctx.lineTo(3, 11);
+        ctx.lineTo(0, 18);
+        ctx.lineTo(-3, 11);
+        ctx.lineTo(-10, 8);
+        ctx.lineTo(-3, 5);
+        ctx.closePath();
+        ctx.fillStyle = '#94A3B8';
+        ctx.fill();
+      }
+
+      ctx.restore();
+    }
+
+    function render3DCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const cx = canvas.width / 2;
+      const cy = canvas.height / 2;
+
+      if (state.viewMode === 'flat') {
+        const length = canvas.width * 0.75;
+        const startX = cx - length / 2;
+        const total = 26;
+        const step = length / total;
+        const wordLen = state.word.length;
+        const wordStart = Math.floor(total / 2) - Math.floor(wordLen / 2);
+
+        ctx.beginPath();
+        ctx.moveTo(startX, cy);
+        ctx.lineTo(startX + length, cy);
+        ctx.strokeStyle = '#C5A059';
+        ctx.lineWidth = 3;
+        ctx.stroke();
+
+        for (let i = 0; i < total; i++) {
+          const x = startX + i * step;
+          if (wordLen > 0 && i >= wordStart && i < wordStart + wordLen) {
+            draw3DLetterBead(x, cy, 14, state.word[i - wordStart]);
+          } else {
+            draw3DSphere(x, cy, 13, state.base, i);
+          }
+        }
+
+        draw3DCharm(cx, cy + 28, state.charm);
+      } else {
+        const scaleFactor = canvas.width / 680;
+        const baseRadius = (185 + (state.size - 16.5) * 8) * scaleFactor;
+        const totalBeads = 28;
+        const wordLen = state.word.length;
+        const wordStart = Math.floor(totalBeads / 2) - Math.floor(wordLen / 2);
+
+        for (let i = 0; i < totalBeads; i++) {
+          const ang = (i / totalBeads) * Math.PI * 2 + state.rotation;
+          const x = cx + Math.cos(ang) * baseRadius;
+          const y = cy + Math.sin(ang) * (baseRadius * 0.82);
+          const depth = (Math.sin(ang) + 1) / 2;
+          const beadRadius = (13 + depth * 7.5) * scaleFactor;
+
+          if (wordLen > 0 && i >= wordStart && i < wordStart + wordLen) {
+            draw3DLetterBead(x, y, beadRadius * 1.05, state.word[i - wordStart]);
+          } else {
+            draw3DSphere(x, y, beadRadius, state.base, i);
+          }
+        }
+
+        const charmAngle = Math.PI / 2;
+        const charmX = cx + Math.cos(charmAngle) * baseRadius;
+        const charmY = cy + Math.sin(charmAngle) * (baseRadius * 0.82);
+        draw3DCharm(charmX, charmY, state.charm);
+      }
+    }
+
+    // Touch & Drag Handling with Audio Swish Feedback
+    const canvasBox = document.getElementById('canvasBox');
+
+    function onPointerStart(e) {
+      SoundEngine.init();
+      state.isDragging = true;
+      state.lastX = e.clientX || (e.touches && e.touches[0].clientX);
+    }
+
+    function onPointerMove(e) {
+      if (!state.isDragging) return;
+      const x = e.clientX || (e.touches && e.touches[0].clientX);
+      const dx = x - state.lastX;
+      state.lastX = x;
+      state.rotation += dx * 0.012;
+
+      if (Math.abs(dx) > 12) SoundEngine.playOrbitSwish();
+
+      render3DCanvas();
+    }
+
+    function onPointerEnd() {
+      state.isDragging = false;
+    }
+
+    canvasBox.addEventListener('mousedown', onPointerStart);
+    window.addEventListener('mousemove', onPointerMove);
+    window.addEventListener('mouseup', onPointerEnd);
+    canvasBox.addEventListener('touchstart', onPointerStart, { passive: true });
+    window.addEventListener('touchmove', onPointerMove, { passive: true });
+    window.addEventListener('touchend', onPointerEnd);
+
+    function animLoop() {
+      if (state.isSpinning && !state.isDragging && state.viewMode === 'loop') {
+        state.rotation += 0.005;
+        render3DCanvas();
+      }
+      requestAnimationFrame(animLoop);
+    }
+
+    function updatePricingAndBadges() {
+      let total = state.basePrice + state.charmPrice;
+      if (state.word.length > 0) total += state.word.length * 30;
+
+      document.getElementById('canvasPriceDisplay').innerText = `₹${total}`;
+      document.getElementById('customTitleBadge').innerText = `${state.baseName} & ${state.charmName}`;
+      document.getElementById('recipeBaseSummary').innerText = state.baseName;
+      document.getElementById('recipeCharmSummary').innerText = `+ ${state.charmName}`;
+      return total;
+    }
+
+    function switchAtelierTab(tabId, btn) {
+      SoundEngine.playBeadSound();
+      document.querySelectorAll('.atelier-tab-pane').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.atelier-tab-btn').forEach(b => {
+        b.classList.remove('bg-gold-500', 'text-white', 'shadow-xs');
+        b.classList.add('text-charcoal/70', 'bg-ivory');
+      });
+
+      document.getElementById(tabId).classList.remove('hidden');
+      btn.classList.remove('text-charcoal/70', 'bg-ivory');
+      btn.classList.add('bg-gold-500', 'text-white', 'shadow-xs');
+    }
+
+    function pickBase(key, el, name, price) {
+      state.base = key;
+      state.baseName = name;
+      state.basePrice = price;
+
+      document.querySelectorAll('.base-option-card').forEach(c => {
+        c.classList.remove('active-base', 'border-gold-500', 'bg-gold-500/10');
+        c.classList.add('border-gold-500/25', 'bg-ivory');
+      });
+
+      el.classList.add('active-base', 'border-gold-500', 'bg-gold-500/10');
+      el.classList.remove('border-gold-500/25', 'bg-ivory');
+
+      document.getElementById('activeBaseLabel').innerText = `${name} (₹${price})`;
+      updatePricingAndBadges();
+      SoundEngine.playChime(780);
+      render3DCanvas();
+    }
+
+    function pickCharm(key, el, name, price) {
+      state.charm = key;
+      state.charmName = name;
+      state.charmPrice = price;
+
+      document.querySelectorAll('.charm-option-card').forEach(c => {
+        c.classList.remove('active-charm', 'border-gold-500', 'bg-gold-500/10');
+        c.classList.add('border-gold-500/25', 'bg-ivory');
+      });
+
+      el.classList.add('active-charm', 'border-gold-500', 'bg-gold-500/10');
+      el.classList.remove('border-gold-500/25', 'bg-ivory');
+
+      document.getElementById('activeCharmLabel').innerText = `${name} (+₹${price})`;
+      updatePricingAndBadges();
+      SoundEngine.playCharmDing();
+      render3DCanvas();
+    }
+
+    function handleWordInput(val) {
+      state.word = val.trim().toUpperCase().replace(/[^A-Z]/g, '');
+      document.getElementById('nameInput').value = state.word;
+      SoundEngine.playLetterClick();
+      updatePricingAndBadges();
+      render3DCanvas();
+    }
+
+    function handleSizeChange(val) {
+      state.size = parseFloat(val);
+      document.getElementById('sliderSizeDisplay').innerText = `${val} cm`;
+      document.getElementById('wristFitBadge').innerText = `${val} cm Wrist`;
+      render3DCanvas();
+    }
+
+    function toggleViewMode() {
+      SoundEngine.playBeadSound();
+      state.viewMode = state.viewMode === 'loop' ? 'flat' : 'loop';
+      document.getElementById('canvasViewModeLabel').innerText = state.viewMode === 'loop' ? 'Flat Tray View' : '3D Loop View';
+      document.getElementById('canvasModeHeadline').innerText = state.viewMode === 'loop' ? '3D Wrist Loop Simulation' : 'Flat Jeweler Velvet Strand';
+      render3DCanvas();
+    }
+
+    function toggleAutoSpin() {
+      SoundEngine.playBeadSound();
+      state.isSpinning = !state.isSpinning;
+      document.getElementById('canvasSpinLabel').innerText = `Spin: ${state.isSpinning ? 'ON' : 'OFF'}`;
+    }
+
+    function randomizeMix() {
+      SoundEngine.playBagSound();
+      const bases = [
+        { k: 'pearl_white', n: 'Classic Akoya White Pearl', p: 799 },
+        { k: 'pearl_multi_mix', n: 'Multiverse Pastel Pearl Mix', p: 849 },
+        { k: 'pearl_tahitian', n: 'Tahitian Peacock Black Pearl', p: 899 },
+        { k: 'pearl_rose_gold', n: 'Rose Gold Blush Pearl', p: 849 },
+        { k: 'pearl_golden', n: 'South Sea Champagne Gold Pearl', p: 899 },
+        { k: 'pearl_lavender', n: 'Lavender Lilac Pearl', p: 829 },
+        { k: 'pink_heishi', n: 'Pearl & Blush Heishi Clay Mix', p: 699 },
+        { k: 'amber_glass', n: 'Pearl & Amber Crystal Glow', p: 799 },
+        { k: 'turquoise', n: 'Raw Turquoise Nuggets & Gold', p: 799 }
+      ];
+      const charms = [
+        { k: 'starfish', n: 'Gold Starfish', p: 100 },
+        { k: 'butterfly', n: 'Pavé Butterfly', p: 150 },
+        { k: 'shell', n: 'Enamel Seashell', p: 120 },
+        { k: 'heart', n: 'Puffy Gold Heart', p: 100 },
+        { k: 'evil_eye', n: 'Evil Eye Nazar', p: 130 },
+        { k: 'clover', n: 'Emerald Clover', p: 120 },
+        { k: 'crescent_moon', n: 'Crescent Moon', p: 110 }
+      ];
+
+      const b = bases[Math.floor(Math.random() * bases.length)];
+      const c = charms[Math.floor(Math.random() * charms.length)];
+
+      const baseBtn = document.querySelector(`.base-option-card[data-base="${b.k}"]`);
+      if (baseBtn) pickBase(b.k, baseBtn, b.n, b.p);
+
+      const charmBtn = document.querySelector(`.charm-option-card[data-charm="${c.k}"]`);
+      if (charmBtn) pickCharm(c.k, charmBtn, c.n, c.p);
+    }
+
+    // -------------------------------------------------------------
+    // 4. SIGNATURE GALLERY & BULLETPROOF OWNER DELETION
+    // -------------------------------------------------------------
+    function getDeletedIds() {
+      return JSON.parse(localStorage.getItem('nyumi_deleted_ids') || '[]');
+    }
+
+    function getCustomProducts() {
+      return JSON.parse(localStorage.getItem('nyumi_custom_products') || '[]');
+    }
+
+    function renderGallery() {
+      const grid = document.getElementById('readyMadeGrid');
+      grid.innerHTML = '';
+      const deleted = getDeletedIds();
+      const customs = getCustomProducts();
+
+      const combined = [...customs, ...defaultProducts];
+      const visible = combined.filter(p => !deleted.includes(p.id));
+      document.getElementById('galleryCountBadge').innerText = `${visible.length} Real Creations`;
+
+      visible.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'group bg-white rounded-2xl border border-gold-500/25 p-4 shadow-sm hover:shadow-md transition flex flex-col relative';
+        card.id = `card-${p.id}`;
+
+        card.innerHTML = `
+          <!-- HIGH-CONTRAST OWNER DELETE BUTTON -->
+          <button type="button" class="owner-delete-btn" onclick="deleteBracelet(event, '${p.id}')">
+            <span>🗑️ Delete</span>
+          </button>
+
+          <div class="relative w-full aspect-square rounded-xl bg-cashmere/60 border border-gold-500/20 overflow-hidden mb-3.5 flex items-center justify-center">
+            <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\\'text-3xl text-gold-500\\'>✨</span>';">
+          </div>
+
+          <div class="flex-1 flex flex-col justify-between space-y-3">
+            <div>
+              <span class="text-[9.5px] uppercase tracking-widest text-gold-600 font-semibold block mb-0.5">Handmade in Studio</span>
+              <h3 class="font-cinzel text-sm sm:text-base font-bold text-charcoal leading-snug">${p.name}</h3>
+              <p class="text-xs text-espresso/70 font-light mt-1 line-clamp-2">${p.desc}</p>
+            </div>
+
+            <div class="pt-2 border-t border-gold-500/20 flex items-center justify-between">
+              <div>
+                <span class="text-[9.5px] uppercase tracking-wider text-charcoal/50 block">Price</span>
+                <span class="font-cormorant text-xl font-bold text-gold-600">₹${p.price}</span>
+              </div>
+              <button onclick="customizePreset('${p.base}', '${p.charm}', '${p.name}', ${p.price})" class="px-3.5 py-1.5 rounded-full bg-ivory border border-gold-500/50 hover:bg-gold-500 hover:text-white font-cinzel text-xs font-bold transition flex items-center gap-1 shadow-2xs">
+                <span>Customize in 3D</span>
+              </button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function deleteBracelet(event, id) {
+      if (event) {
+        event.stopPropagation();
+        event.preventDefault();
+      }
+
+      SoundEngine.playBeadSound();
+      const confirmed = window.confirm("Are you sure you want to remove this bracelet from the gallery?");
+      if (!confirmed) return;
+
+      const deleted = getDeletedIds();
+      if (!deleted.includes(id)) {
+        deleted.push(id);
+        localStorage.setItem('nyumi_deleted_ids', JSON.stringify(deleted));
+      }
+
+      let customs = getCustomProducts();
+      customs = customs.filter(c => c.id !== id);
+      localStorage.setItem('nyumi_custom_products', JSON.stringify(customs));
+
+      const cardEl = document.getElementById(`card-${id}`);
+      if (cardEl) {
+        cardEl.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+        cardEl.style.opacity = '0';
+        cardEl.style.transform = 'scale(0.9)';
+        setTimeout(() => {
+          renderGallery();
+        }, 260);
+      } else {
+        renderGallery();
+      }
+    }
+
+    function restoreDeletedCatalog() {
+      SoundEngine.playChime();
+      localStorage.removeItem('nyumi_deleted_ids');
+      renderGallery();
+      alert("All bracelet cards have been restored to the gallery!");
+    }
+
+    function customizePreset(baseKey, charmKey, name, price) {
+      SoundEngine.playChime(820);
+      const baseBtn = document.querySelector(`.base-option-card[data-base="${baseKey}"]`);
+      if (baseBtn) pickBase(baseKey, baseBtn, name, price);
+
+      const charmBtn = document.querySelector(`.charm-option-card[data-charm="${charmKey}"]`);
+      if (charmBtn) pickCharm(charmKey, charmBtn, charmKey, 100);
+
+      document.getElementById('atelier').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // -------------------------------------------------------------
+    // 5. IN-APP OWNER PIN MODAL & SECURITY
+    // -------------------------------------------------------------
+    let logoClicks = 0;
+    let logoTimer = null;
+
+    function handleBrandLogoClick() {
+      SoundEngine.playBeadSound();
+      logoClicks++;
+      clearTimeout(logoTimer);
+      logoTimer = setTimeout(() => { logoClicks = 0; }, 600);
+      if (logoClicks >= 3) {
+        logoClicks = 0;
+        openOwnerPinModal();
+      }
+    }
+
+    function openOwnerPinModal() {
+      SoundEngine.playChime();
+      const modal = document.getElementById('ownerPinModal');
+      const err = document.getElementById('ownerPinError');
+      const inp = document.getElementById('ownerPinInput');
+      err.classList.add('hidden');
+      inp.value = '';
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      setTimeout(() => inp.focus(), 100);
+    }
+
+    function closeOwnerPinModal() {
+      const modal = document.getElementById('ownerPinModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function verifyOwnerPin() {
+      const inp = document.getElementById('ownerPinInput');
+      const err = document.getElementById('ownerPinError');
+      if (inp.value === "1234") {
+        closeOwnerPinModal();
+        SoundEngine.playBagSound();
+        document.body.classList.add('owner-mode-active');
+        document.getElementById('ownerStudioBar').classList.remove('hidden');
+        renderGallery();
+      } else {
+        SoundEngine.playBeadSound();
+        err.classList.remove('hidden');
+        inp.select();
+      }
+    }
+
+    document.getElementById('ownerPinInput').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') verifyOwnerPin();
+    });
+
+    function lockOwnerMode() {
+      SoundEngine.playBeadSound();
+      document.body.classList.remove('owner-mode-active');
+      document.getElementById('ownerStudioBar').classList.add('hidden');
+      renderGallery();
+    }
+
+    // -------------------------------------------------------------
+    // 6. ADD BRACELET CARD MODAL (FOR OWNER)
+    // -------------------------------------------------------------
+    function openAddBraceletModal() {
+      SoundEngine.playBeadSound();
+      document.getElementById('addBraceletModal').classList.remove('hidden');
+      document.getElementById('addBraceletModal').classList.add('flex');
+    }
+
+    function closeAddBraceletModal() {
+      document.getElementById('addBraceletModal').classList.add('hidden');
+      document.getElementById('addBraceletModal').classList.remove('flex');
+    }
+
+    function saveNewBracelet() {
+      const title = document.getElementById('newBraceletTitle').value.trim() || 'New Artisan Bracelet';
+      const price = parseInt(document.getElementById('newBraceletPrice').value) || 799;
+      const desc = document.getElementById('newBraceletDesc').value.trim() || 'Handmade in studio with authentic freshwater pearls.';
+      const base = document.getElementById('newBraceletBase').value;
+      const fileInp = document.getElementById('newBraceletPhoto');
+
+      const processCard = (imgSrc) => {
+        const customs = getCustomProducts();
+        customs.unshift({
+          id: 'custom_' + Date.now(),
+          name: title,
+          price: price,
+          base: base,
+          charm: 'starfish',
+          desc: desc,
+          img: imgSrc
+        });
+        localStorage.setItem('nyumi_custom_products', JSON.stringify(customs));
+        closeAddBraceletModal();
+        SoundEngine.playCharmDing();
+        renderGallery();
+        alert("New bracelet card published!");
+      };
+
+      if (fileInp.files && fileInp.files[0]) {
+        const reader = new FileReader();
+        reader.onload = (e) => processCard(e.target.result);
+        reader.readAsDataURL(fileInp.files[0]);
+      } else {
+        processCard('1000360496.jpg');
+      }
+    }
+
+    // -------------------------------------------------------------
+    // 7. SHOPPING BAG & WHATSAPP
+    // -------------------------------------------------------------
+    function updateCartUI() {
+      const count = cart.length;
+      document.getElementById('bagCounter').innerText = count;
+      document.getElementById('drawerBagCount').innerText = count;
+
+      const list = document.getElementById('cartItemList');
+      const empty = document.getElementById('emptyCartView');
+
+      if (count === 0) {
+        empty.classList.remove('hidden');
+        list.innerHTML = '';
+        list.appendChild(empty);
+        document.getElementById('cartSubtotalDisplay').innerText = '₹0';
+        return;
+      }
+
+      empty.classList.add('hidden');
+      list.innerHTML = '';
+      let sum = 0;
+
+      cart.forEach((item, idx) => {
+        sum += item.price;
+        const div = document.createElement('div');
+        div.className = 'p-3 rounded-xl bg-ivory border border-gold-500/20 flex items-center justify-between gap-3 text-xs';
+        div.innerHTML = `
+          <div>
+            <span class="font-cinzel font-bold text-charcoal block">${item.title}</span>
+            <span class="text-[10px] text-charcoal/60 block">${item.details}</span>
+            <span class="text-gold-600 font-bold">₹${item.price}</span>
+          </div>
+          <button onclick="removeCartItem(${idx})" class="text-red-500 hover:text-red-700 p-1 text-base">✕</button>
+        `;
+        list.appendChild(div);
+      });
+
+      document.getElementById('cartSubtotalDisplay').innerText = `₹${sum}`;
+    }
+
+    function addCustomToBag() {
+      SoundEngine.playBagSound();
+      const total = updatePricingAndBadges();
+      cart.push({
+        title: `${state.baseName} & ${state.charmName}`,
+        details: `Wrist: ${state.size}cm | Initials: ${state.word || 'None'}`,
+        price: total
+      });
+      updateCartUI();
+      toggleCartDrawer(true);
+    }
+
+    function removeCartItem(idx) {
+      SoundEngine.playBeadSound();
+      cart.splice(idx, 1);
+      updateCartUI();
+    }
+
+    function toggleCartDrawer(open) {
+      const d = document.getElementById('cartDrawer');
+      const p = document.getElementById('cartContentPanel');
+      if (open) {
+        d.classList.remove('pointer-events-none', 'opacity-0');
+        d.classList.add('opacity-100');
+        p.classList.remove('translate-x-full');
+      } else {
+        d.classList.add('pointer-events-none', 'opacity-0');
+        d.classList.remove('opacity-100');
+        p.classList.add('translate-x-full');
+      }
+    }
+
+    function orderCustomViaWhatsApp() {
+      SoundEngine.playBagSound();
+      const total = updatePricingAndBadges();
+      const msg = `Hello NYUMI NOOR! ✨%0A%0AI would like to order a handcrafted custom bracelet:%0A- Foundation: ${encodeURIComponent(state.baseName)}%0A- Charm: ${encodeURIComponent(state.charmName)}%0A- Custom Name/Initials: ${encodeURIComponent(state.word || 'None')}%0A- Wrist Sizing: ${state.size} cm%0A- Total: ₹${total}%0A%0APlease confirm my order!`;
+      window.open(`https://wa.me/?text=${msg}`, '_blank');
+    }
+
+    function orderViaWhatsAppCart() {
+      SoundEngine.playBagSound();
+      if (cart.length === 0) {
+        orderCustomViaWhatsApp();
+        return;
+      }
+      let summary = "Hello NYUMI NOOR! ✨%0A%0AI would like to order these handcrafted pieces:%0A";
+      let total = 0;
+      cart.forEach((item, i) => {
+        total += item.price;
+        summary += `%0A${i+1}. *${encodeURIComponent(item.title)}* (${item.details}) - ₹${item.price}`;
+      });
+      summary += `%0A%0A*Grand Total: ₹${total}*`;
+      window.open(`https://wa.me/?text=${summary}`, '_blank');
+    }
+
+    // -------------------------------------------------------------
+    // 8. INITIALIZATION
+    // -------------------------------------------------------------
+    window.addEventListener('resize', resizeCanvas);
+    window.addEventListener('DOMContentLoaded', () => {
+      initHeroImage();
+      resizeCanvas();
+      updatePricingAndBadges();
+      renderGallery();
+      animLoop();
+
+      ['click', 'touchstart'].forEach(evt => {
+        document.body.addEventListener(evt, () => {
+          SoundEngine.init();
+        }, { once: true });
+      });
+    });
+  </script>
+</body>
+</html>
